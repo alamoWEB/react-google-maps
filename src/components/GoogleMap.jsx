@@ -362,6 +362,14 @@ export class Map extends React.PureComponent {
   getZoom() {
     return this.context[MAP].getZoom()
   }
+
+  /**
+   * @type GoogleMaps
+   * @public
+   */
+  getMap() {
+    return this.context[MAP]
+  }
 }
 
 export const GoogleMap = Map
@@ -425,5 +433,27 @@ const updaterMap = {
 
   zoom(instance, zoom) {
     instance.setZoom(zoom)
+  },
+
+  showsPointsOfInterest(instance, showsPointsOfInterest) {
+    if (showsPointsOfInterest) {
+      instance.setOptions({
+        styles: [
+          {
+            featureType: "poi",
+            stylers: [{ visibility: "on" }],
+          },
+        ],
+      })
+    } else {
+      instance.setOptions({
+        styles: [
+          {
+            featureType: "poi",
+            stylers: [{ visibility: "off" }],
+          },
+        ],
+      })
+    }
   },
 }

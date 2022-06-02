@@ -56,7 +56,11 @@ export function withGoogleMap(BaseComponent) {
  See https://github.com/tomchentw/react-google-maps/pull/168`
       )
       // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
-      const map = new google.maps.Map(node)
+      const map = new google.maps.Map(node, {
+        streetViewControl: false,
+        fullscreenControl: false,
+        mapTypeControl: false,
+      })
       this.setState({ map })
     }
 
